@@ -1,0 +1,91 @@
+/* Inherits variables from NgoDashboard.css */
+.replenish-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.replenish-modal-container {
+  background-color: var(--ngo-bg-panel);
+  border: 1px solid var(--ngo-border-color);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.replenish-modal-container .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--ngo-border-color);
+}
+
+.replenish-modal-container .modal-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--ngo-text-primary);
+}
+
+.replenish-modal-container .modal-body {
+  padding: 1.5rem;
+}
+
+.replenish-modal-container .modal-body p {
+  margin: 0 0 1rem 0;
+  color: var(--ngo-text-secondary);
+}
+
+.replenish-modal-container .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.replenish-modal-container .form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--ngo-border-color);
+  background-color: var(--ngo-bg-dark);
+  color: var(--ngo-text-primary);
+  font-size: 1rem;
+}
+
+.replenish-modal-container .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--ngo-border-color);
+  background-color: rgba(0,0,0,0.1);
+}
+
+.replenish-modal-container .error-message {
+  color: var(--ngo-accent-red);
+  background-color: rgba(231, 76, 60, 0.1);
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}

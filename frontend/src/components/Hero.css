@@ -1,0 +1,197 @@
+/*
+  DisasterLink - Cinematic Hero Section CSS
+*/
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(180deg, #02010f 0%, #0d0934 100%);
+  overflow: hidden;
+  color: #fff;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Headline --- */
+.hero-headline {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0;
+  /* Animation: fade in from below, after lines */
+  animation: fadeInSlideUp 1s ease-out 2.5s forwards;
+}
+
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Golden Lines --- */
+.hero-line {
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(90deg, #ffcc66, #ffaa33);
+  box-shadow: 0 0 10px #ffcc66, 0 0 20px #ffaa33;
+  transform: translateY(-100vh);
+}
+
+.hero-line--top {
+  margin-bottom: 1.5rem;
+  /* Animation: slide down after circle */
+  animation: slideDown 1.5s ease-out 1.5s forwards;
+}
+
+.hero-line--bottom {
+  margin-top: 1.5rem;
+  width: 150px; /* Bottom line slightly shorter */
+  /* Animation: slide down after top line */
+  animation: slideDown 1.5s ease-out 1.8s forwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* --- Buttons --- */
+.hero-buttons {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  opacity: 0;
+  /* Animation: fade in last */
+  animation: fadeIn 1s ease-out 3s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Using a specific class to avoid conflicts with other page buttons */
+.hero-btn {
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.hero-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 128, 255, 0.5);
+  transform: translateY(-3px);
+}
+
+/* --- Half Circle --- */
+.hero-half-circle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 150vw;
+  height: 75vw;
+  max-width: 2000px;
+  max-height: 1000px;
+  /* Updated gradient for more distinct glows */
+  background: radial-gradient(
+    circle at 50% 100%,
+    #0d0934 40%,
+    rgba(2, 1, 15, 0.8) 60%,
+    rgba(0, 128, 255, 0.5) 75%, /* Neon blue glow */
+    rgba(255, 170, 51, 0.7) 78%, /* Golden/Orange glow */
+    transparent 80%
+  );
+  border-top-left-radius: 100vw;
+  border-top-right-radius: 100vw;
+  transform: translate(-50%, 100%);
+  /* Animation: slide up first */
+  animation: slideUp 1.5s ease-out forwards;
+  z-index: 1;
+}
+
+/* Glow effect behind the half-circle */
+.hero-half-circle::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 100%,
+    rgba(0, 128, 255, 0.3),
+    transparent 70%
+  );
+  filter: blur(50px);
+  opacity: 0.8;
+  z-index: -1;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, 100%);
+  }
+  to {
+    transform: translate(-50%, 50%);
+  }
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+  .hero-headline {
+    font-size: 2.5rem;
+  }
+
+  .hero-line {
+    width: 150px;
+  }
+
+  .hero-line--bottom {
+    width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-headline {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    width: 80%;
+  }
+  .hero-btn {
+    width: 100%;
+  }
+}

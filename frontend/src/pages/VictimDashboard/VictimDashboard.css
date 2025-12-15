@@ -1,0 +1,260 @@
+/* --- Main Split View Layout --- */
+.victim-dashboard-split-view {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #1a1a2e; /* Dark blue-ish background */
+  color: #e0e0e0;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden; /* Prevent scrolling on the main container */
+}
+
+/* Use specific class names to avoid conflicts */
+.victim-left-panel {
+  width: 35%;
+  max-width: 450px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow-y: auto;
+}
+
+.victim-right-panel {
+  flex: 1;
+  position: relative; /* For map positioning */
+}
+
+.tracking-map {
+  height: 100%;
+  width: 100%;
+}
+
+/* --- Glassmorphism Card Style --- */
+.glass-card {
+  background: rgba(42, 47, 65, 0.6); /* Semi-transparent background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* --- Left Panel Content --- */
+.victim-left-panel h2 {
+  text-align: center;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #b0b8d9;
+}
+
+.input-group input[type="text"] {
+  padding: 0.8rem 1rem;
+  border: 1px solid #404656;
+  background-color: rgba(26, 26, 46, 0.8);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.input-group input[type="text"]:focus {
+  outline: none;
+  border-color: #00aaff;
+  box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.2);
+}
+
+.input-group button {
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(90deg, #007bff, #00aaff);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.input-group button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.input-group button:disabled {
+  background: #555;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.error-message {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #ff6b6b;
+}
+
+/* --- Details Section --- */
+.details-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.request-details-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(26, 26, 46, 0.7);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.detail-icon {
+  color: #00aaff;
+  flex-shrink: 0;
+}
+
+.detail-card h4 {
+  margin: 0 0 0.25rem;
+  font-size: 0.8rem;
+  color: #a9a9d4;
+  font-weight: 500;
+}
+
+.detail-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  word-break: break-all;
+}
+
+/* --- Animated Status Tracker --- */
+.status-tracker {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-top: 1rem;
+}
+
+.status-tracker::before {
+  content: '';
+  position: absolute;
+  top: 8px; /* Center of the dot */
+  left: 10px;
+  right: 10px;
+  height: 4px;
+  background-color: #404656;
+  border-radius: 2px;
+}
+
+.status-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 25%;
+  text-align: center;
+}
+
+.status-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #404656;
+  border: 3px solid #1a1a2e;
+  transition: background-color 0.4s ease, transform 0.3s ease;
+}
+
+.status-label {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #98a0b3;
+  transition: color 0.4s ease;
+}
+
+.status-step.active .status-dot {
+  background-color: #00aaff;
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.5);
+}
+
+.status-step.active .status-label {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* --- Map & Legend --- */
+.map-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a2e; /* Match the main background */
+  color: #777;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.map-legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.legend-icon {
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+}
+
+.legend-icon.victim { background-color: #d9534f; } /* Red */
+.legend-icon.volunteer { background-color: #337ab7; } /* Blue */
+
+/* --- Responsive Layout --- */
+@media (max-width: 768px) {
+  .victim-dashboard-split-view {
+    flex-direction: column;
+  }
+  .victim-left-panel {
+    width: 100%;
+    max-width: none;
+  }
+  .victim-right-panel {
+    min-height: 400px;
+  }
+}

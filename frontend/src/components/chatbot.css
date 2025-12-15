@@ -1,0 +1,186 @@
+.chatbot-bubble {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  /* We will use a background-image SVG for the custom icon */
+  background-color: var(--glow-purple); /* Fallback color */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 20px var(--glow-purple);
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z'/%3e%3c/svg%3e");
+  background-size: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.chatbot-bubble:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 30px var(--glow-purple);
+}
+
+.chatbot-window {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 350px;
+  height: 500px;
+  background-color: var(--navbar-bg, #0d0c1d); /* Dark theme background */
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif; /* Use theme font */
+}
+
+.chatbot-header {
+  background-color: var(--text-highlight, #4f8cff);
+  color: var(--text-light, #f1f1f1);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot-header h3 {
+  margin: 0;
+  font-size: 1.1em;
+}
+
+.chatbot-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-light, #f1f1f1);
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.chatbot-messages {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #1a1a2e; /* A slightly lighter dark shade */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  max-width: 80%;
+  padding: 10px 15px;
+  border-radius: 18px;
+  line-height: 1.4;
+}
+
+.message.ai {
+  background-color: #2a2f41; /* Panel color from other dashboards */
+  color: var(--text-light, #f1f1f1);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.message.user {
+  background-color: var(--text-highlight, #4f8cff);
+  color: var(--text-light, #f1f1f1);
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.message p {
+  margin: 0;
+}
+
+.typing-indicator {
+  font-weight: bold;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+.chatbot-input-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-top: 1px solid var(--v-border-color, #404656);
+  background-color: var(--navbar-bg, #0d0c1d);
+}
+
+.chatbot-input-form input {
+  flex-grow: 1;
+  background-color: #2a2f41;
+  border: 1px solid var(--v-border-color, #404656);
+  color: var(--text-light, #f1f1f1);
+  border-radius: 20px;
+  padding: 10px 15px;
+  font-size: 1em;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.chatbot-input-form input:focus {
+  border-color: var(--text-highlight, #4f8cff);
+}
+
+.mic-button, .send-button {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.mic-button {
+  background-color: transparent;
+  color: var(--text-secondary, #a9a9a9);
+}
+
+.mic-button:hover:not(:disabled) {
+  background-color: #2a2f41;
+  color: var(--text-light, #f1f1f1);
+}
+
+.mic-button.listening {
+  background-color: var(--btn-request-help-bg, #ff3b30);
+  color: white;
+  animation: pulse 1.5s infinite;
+}
+
+.send-button {
+  background-color: var(--text-highlight, #4f8cff);
+  color: white;
+}
+
+.send-button:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.mic-button:disabled, .send-button:disabled {
+  background-color: #555;
+  color: #888;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 59, 48, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
+}

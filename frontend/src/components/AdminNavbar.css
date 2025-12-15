@@ -1,0 +1,54 @@
+.admin-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 80px; /* Match main navbar height */
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100; /* Higher than sidebar */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.admin-navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.admin-nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+.admin-user-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.admin-user-name {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.btn-admin-logout {
+  background-color: transparent;
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-admin-logout:hover {
+  background-color: var(--accent-primary);
+  color: #fff;
+}

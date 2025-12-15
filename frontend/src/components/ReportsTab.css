@@ -1,0 +1,159 @@
+.reports-tab-view {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* 1. Filters Section */
+.report-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background-color: var(--bg-primary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+/* 2. Summary Cards */
+.report-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.summary-card {
+  background-color: var(--bg-primary);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  border-left: 5px solid var(--accent-primary);
+}
+
+.summary-card.fulfilled { border-left-color: #28a745; }
+.summary-card.pending { border-left-color: #ffc107; }
+
+.summary-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.summary-card p {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* 3. Table Preview */
+.report-preview h4 {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.preview-table-container {
+  /* Glassmorphism effect */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: var(--shadow-main);
+  overflow: hidden; /* Hide scrollbars but allow internal scrolling */
+  margin-top: 1rem;
+  padding: 0;
+}
+
+.preview-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.preview-table th,
+.preview-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.preview-table th {
+  background-color: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.preview-table th:first-child { border-top-left-radius: 12px; }
+.preview-table th:last-child { border-top-right-radius: 12px; }
+
+.preview-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* 4. Download Section */
+.report-download-section {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.btn-download {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-download.csv {
+  background-color: var(--accent-primary);
+  color: #fff;
+}
+
+.btn-download.csv:hover {
+  opacity: 0.9;
+}
+
+.btn-download.pdf {
+  background-color: transparent;
+  border: 1px solid var(--text-secondary);
+  color: var(--text-secondary);
+}
+
+/* 5. Empty State */
+.empty-state-message {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--bg-primary);
+  border-radius: 12px;
+  color: var(--text-secondary);
+}

@@ -1,0 +1,190 @@
+.navbar {
+  background: rgba(10, 15, 30, 0.8); /* Dark blue with transparency */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 128, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* New container for left-aligned items */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Adjust space between logo and nav links */
+}
+
+.navbar-brand {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically center items */
+  gap: 0.75rem; /* Space between logo and text */
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--gradient-blue-purple); /* Using theme variable */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* New styles for the logo container */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-blue-purple); /* Same gradient as the text */
+  border-radius: 8px; /* Rounded square */
+  padding: 8px;
+  box-shadow: 0 4px 15px rgba(0, 128, 255, 0.2);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #a9a9a9; /* text-secondary dark fallback */
+  transition: color 0.3s ease, text-shadow 0.3s ease, background-color 0.3s, box-shadow 0.3s;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 500;
+}
+
+.nav-links a:not(.btn):hover,
+.nav-links a:not(.btn).active {
+  color: #fff;
+  text-shadow: 0 0 10px #3498db;
+}
+
+/* Active state for button-like NavLink */
+.nav-links a.active-btn {
+  background-color: #3498db;
+  color: #1a1c23;
+  box-shadow: 0 0 15px #3498db;
+  text-shadow: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* User Info and Logout Button */
+.nav-user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-user-name {
+  color: #a9a9a9;
+  font-size: 0.9rem;
+}
+
+.btn-logout {
+  background-color: transparent;
+  border: 1px solid var(--color-critical, #ff4d4d);
+  color: var(--color-critical, #ff4d4d);
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px; /* Pill shape */
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-logout:hover {
+  background-color: var(--color-critical, #ff4d4d);
+  color: white;
+}
+
+/* Generic Button Styles */
+.btn {
+  padding: 0.6rem 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* New Secondary Button Style */
+.btn-secondary-nav {
+  background-color: transparent;
+  color: #3498db;
+  border: 1px solid #3498db;
+  border-radius: 50px;
+}
+
+.btn-secondary-nav:hover {
+  background-color: #3498db;
+  color: #1a1c23;
+  box-shadow: 0 0 15px #3498db;
+}
+
+/* Rounded Glow Button */
+.btn-glow-purple {
+  background: #000;
+  border-radius: 50px; /* pill shape */
+  color: #fff;
+  box-shadow: 0 0 15px rgba(128, 90, 213, 0.8);
+  border: 1px solid rgba(128, 90, 213, 0.5);
+}
+
+.btn-glow-purple:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(128, 90, 213, 1);
+}
+
+/* Login Dropdown */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #252831; /* dark theme secondary bg */
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border: 1px solid #353945; /* dark theme border */
+  border-radius: 5px;
+  padding: 0.5rem 0;
+  backdrop-filter: blur(10px);
+}
+
+.dropdown-content a {
+  color: #e0e5ec; /* dark theme primary text */
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #3498db;
+  color: white;
+}
+
+.nav-dropdown:hover .dropdown-content {
+  display: block;
+}

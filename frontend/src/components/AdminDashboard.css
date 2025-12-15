@@ -1,0 +1,289 @@
+.admin-dashboard {
+  display: flex;
+  width: 100%;
+  min-height: 100vh; /* Use min-height to ensure it fills viewport but can grow */
+  padding-top: 80px; /* Offset for the fixed AdminNavbar */
+  background-color: var(--bg-primary); /* Use theme variable */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar {
+  /* The sidebar is already correctly positioned with 'position: fixed' */
+  width: 260px;
+  position: fixed;
+  top: 80px; /* Position it below the main navbar (adjust if navbar height is different) */
+  left: 0;
+  bottom: 0;
+  /* Glassmorphism Effect */
+  background-color: rgba(30, 30, 50, 0.2); /* Semi-transparent background */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px 0;
+  flex-shrink: 0; /* Prevents the sidebar from shrinking */
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.main-content {
+  margin-left: 260px; /* Offset by the width of the sidebar */
+  width: calc(100% - 260px); /* Ensure it takes the remaining width */
+  flex-grow: 1;
+  padding: 40px 40px 50px 40px; /* Add padding at the bottom for the status bar */
+  overflow-y: auto; /* Allows vertical scrolling if content is long */
+  display: block; /* Change to block to allow wrappers to control flex */
+  flex-direction: column;
+  background-color: var(--bg-secondary);
+  transition: background-color 0.3s ease;
+}
+
+/* --- View Wrapper for seamless switching --- */
+.admin-view-wrapper {
+  display: none; /* Hide all views by default */
+}
+
+.admin-view-wrapper.visible {
+  display: flex; /* Show only the active view, and make it a flex container */
+}
+
+/* Target the root div inside the wrapper to ensure it fills the space */
+.admin-view-wrapper > div { flex-grow: 1; display: flex; flex-direction: column; }
+
+/* This ensures the inner view takes up the full height */
+.request-tracking-view {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Make this view grow to fill the main-content area */
+}
+
+
+/* --- Sidebar Content Styling --- */
+.sidebar h2 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 30px;
+  padding: 0 20px;
+  font-weight: 700;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar nav li {
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  border-radius: 15px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center; 
+  gap: 12px;
+}
+
+.sidebar nav li:hover {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.sidebar nav li.active {
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  border-left: 3px solid var(--accent-primary);
+  padding-left: 17px; /* Adjust for border */ 
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+}
+
+/* --- Main Content Styling --- */
+.main-content h1 {
+  font-family: 'Poppins', 'Montserrat', 'Inter', sans-serif;
+  font-weight: 600;
+  background: var(--gradient-blue-purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 2.2rem; /* Keep existing size */
+  margin-bottom: 30px;
+  flex-shrink: 0; /* Prevent the title from shrinking */
+}
+
+.filter-controls {
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  background-color: var(--bg-primary);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-main);
+  flex-shrink: 0; /* Prevent filters from shrinking */
+}
+
+.filter-controls span {
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-right: 10px;
+}
+
+.filter-controls button {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.filter-controls button.active,
+.filter-controls button:hover {
+  background-color: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+}
+
+.requests-table-container {
+  /* Glassmorphism effect */
+  background: rgba(255, 255, 255, 0.05); /* Semi-transparent background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: var(--shadow-main);
+  overflow-x: auto; /* Makes table responsive on small screens */
+  flex-grow: 1; /* This is the key: forces the table container to fill remaining space */
+  padding: 0; /* Remove padding to let the table headers fit nicely */
+}
+
+.requests-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text-primary);
+}
+
+.requests-table th,
+.requests-table td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.requests-table th {
+  background-color: rgba(255, 255, 255, 0.05); /* Slightly more opaque for header */
+  border-top-left-radius: 12px; /* Round top corners */
+  border-top-right-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.requests-table th:first-child { border-top-left-radius: 12px; }
+.requests-table th:last-child { border-top-right-radius: 12px; }
+
+.requests-table tbody tr:hover {
+  background-color: var(--bg-secondary);
+}
+.requests-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.description-cell {
+  max-width: 350px;
+  white-space: normal;
+  word-wrap: break-word;
+  line-height: 1.5;
+}
+
+.description-header {
+  min-width: 300px;
+}
+
+.actions-cell {
+  text-align: center;
+}
+
+.btn-assign {
+  padding: 8px 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-assign:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #fff; /* Text color is usually white for badges */
+  background-color: var(--text-secondary);
+  text-transform: capitalize;
+  display: inline-block;
+  min-width: 90px;
+  text-align: center;
+}
+
+.status-badge.status-pending { background-color: #f0ad4e; }
+.status-badge.status-approved { background-color: #337ab7; }
+.status-badge.status-denied { background-color: #d9534f; }
+.status-badge.status-completed { background-color: #5cb85c; }
+.status-badge.status-assigned { background-color: #337ab7; }
+.status-badge.status-needs-assistance { background-color: #d9534f; }
+
+
+.placeholder-view {
+  background-color: var(--bg-primary);
+  border-radius: 12px;
+  padding: 50px;
+  text-align: center;
+  color: var(--text-secondary);
+  border: 2px dashed var(--border-color);
+  margin-top: 30px;
+}
+
+/* --- Admin Status Bar --- */
+.admin-status-bar {
+  position: fixed; /* Fix the status bar to the bottom of the viewport */
+  bottom: 0;
+  left: 260px; /* Width of the sidebar */
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.6rem 1.5rem;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  z-index: 100;
+  transition: all 0.3s ease;
+}

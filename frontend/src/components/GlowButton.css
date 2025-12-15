@@ -1,0 +1,49 @@
+.glow-button {
+  position: relative;
+  padding: 0.75rem 2rem;
+  border-radius: 50px; /* Pill shape */
+  border: none;
+  background-color: transparent; /* No background fill */
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.glow-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  background: linear-gradient(90deg, #e91e63, #8a2be2) border-box; /* Pink to Purple gradient */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  z-index: -1;
+  transition: all 0.4s ease;
+}
+
+.glow-button {
+  /* Subtle outer glow */
+  filter: drop-shadow(0 0 8px rgba(233, 30, 99, 0.4)) drop-shadow(0 0 8px rgba(138, 43, 226, 0.4));
+}
+
+.glow-button:hover {
+  /* Intensify glow on hover */
+  filter: drop-shadow(0 0 15px rgba(233, 30, 99, 0.7)) drop-shadow(0 0 15px rgba(138, 43, 226, 0.7));
+}
+
+.glow-button span {
+  position: relative;
+  z-index: 2;
+}

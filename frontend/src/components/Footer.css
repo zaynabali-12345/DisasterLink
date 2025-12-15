@@ -1,0 +1,124 @@
+.footer {
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  padding: 6rem 0 2rem 0;
+  margin-top: 6rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 10; /* Ensure footer is above any absolute positioned elements */
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr; /* Give more space to the brand info */
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 3rem;
+}
+
+.footer-column {
+  padding: 0 1rem;
+}
+
+.footer-brand-info .footer-brand {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--gradient-blue-purple); /* Use site's theme gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.footer-brand-info .footer-mission {
+  line-height: 1.7;
+  max-width: 250px;
+}
+
+.footer-heading {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-shadow: 0 0 5px var(--accent-primary);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+  display: inline-block; /* Needed for transform */
+}
+
+.footer-link:hover {
+  color: var(--text-primary);
+  text-shadow: 0 0 8px var(--accent-primary);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-icon-link {
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.social-icon-link:hover {
+  color: var(--accent-primary);
+  transform: scale(1.2) translateY(-3px);
+  text-shadow: 0 0 10px var(--accent-primary);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid on tablets */
+    text-align: center;
+  }
+  .footer-brand-info .footer-mission {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-socials {
+    justify-content: center;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
+}
